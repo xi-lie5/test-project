@@ -573,7 +573,35 @@ fn handle_hide_window(
 #[derive(Resource)]
 struct TextureToSpawn(Image);
 
-//添加图片
+// 检查纹理是否加载并生成精灵的系统
+// fn spawn_sprite_when_texture_loaded(
+//     mut commands: Commands,
+//     textures: Res<Assets<Image>>,
+//     // 修改：移除不必要的 mut
+//     texture_to_spawn: Res<TextureToSpawn>, 
+// ) {
+//         // 使用相对路径加载图片资源
+//     let texture_handle = asset_server.load("path.jpg");
+//     // 插入 TextureToSpawn 资源
+//     commands.insert_resource(TextureToSpawn(texture_handle)); 
+//     if let Some(_texture) = textures.get(&texture_to_spawn.0) {
+//         // 纹理已加载
+//         commands.spawn((
+//             Sprite {
+//                 image: texture_to_spawn.0.clone(),
+//                 custom_size: Some(Vec2::new(500., 500.)),
+//                 ..default()
+//             },
+//             Transform::from_xyz(0.0, 0.0, 2.0), // 设置精灵的位置
+//         ));
+//         // 移除资源，避免重复生成
+//         commands.remove_resource::<TextureToSpawn>();
+//     } else {
+//         // 纹理还未加载
+//         println!("Texture is still loading...");
+//     }
+// }
+
 fn add_and_overlay_images(mut commands: Commands, 
     asset_server: Res<AssetServer>,) {
     // commands.spawn(SpriteBundle {
@@ -583,6 +611,7 @@ fn add_and_overlay_images(mut commands: Commands,
     // });
 
     let icon = asset_server.load("not_open_1\\not_open\\path.jpg");
+    // Display the logo
     commands.spawn((
         Node {
             align_items: AlignItems::Center,
