@@ -573,7 +573,7 @@ fn handle_hide_window(
 #[derive(Resource)]
 struct TextureToSpawn(Image);
 
-//添加图片
+//添加图片12312313232
 fn add_and_overlay_images(mut commands: Commands, 
     asset_server: Res<AssetServer>,) {
     // commands.spawn(SpriteBundle {
